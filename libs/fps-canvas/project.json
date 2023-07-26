@@ -2,34 +2,38 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/fps-canvas/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/fps-canvas",
-        "main": "libs/fps-canvas/src/index.ts",
         "tsConfig": "libs/fps-canvas/tsconfig.lib.json",
-        "assets": ["libs/fps-canvas/*.md"]
+        "project": "libs/fps-canvas/package.json",
+        "entryFile": "libs/fps-canvas/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/fps-canvas/README.md",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "libs/fps-canvas/files",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
-    },
-    "publish": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "command": "node tools/scripts/publish.mjs fps-canvas {args.ver} {args.tag}"
-      },
-      "dependsOn": [
-        {
-          "projects": "self",
-          "target": "build"
-        }
-      ]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/fps-canvas/**/*.ts"]
+        "lintFilePatterns": ["libs/fps-canvas/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "storybook": {
@@ -63,6 +67,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

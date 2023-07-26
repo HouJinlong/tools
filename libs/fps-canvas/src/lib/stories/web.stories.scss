@@ -1,0 +1,45 @@
+.animation {
+  animation: translateX 1s linear infinite;
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+
+@keyframes translateX {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.left3D {
+  animation: left 1s linear infinite;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: red;
+  transform: translate3d(0,0,0);
+}
+.left {
+  animation: left 1s linear infinite;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+@keyframes left {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 200px;
+  }
+  100% {
+    left: 0px;
+  }
+}

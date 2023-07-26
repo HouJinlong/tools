@@ -1,5 +1,8 @@
 {
   "name": "fps-canvas",
-  "version": "0.0.1",
-  "type": "commonjs"
+  "description": "JavaScript FPS Monitor",
+  "homepage": "https://server-hiya-web.mehiya.com/website/fps-canvas/",
+  "license": "MIT",
+  "version": "0.0.1"
 }
+
